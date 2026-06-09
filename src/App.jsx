@@ -120,6 +120,7 @@ export default function App() {
         <Delivery
           {...sharedProps}
           result={result}
+          selectedTheme={selectedTheme}
           onDelivered={() => setScreen('thank-you')}
         />
       )}
