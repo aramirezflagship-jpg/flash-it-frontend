@@ -46,7 +46,8 @@ export default function Processing({ lang, t, capturedPhoto, selectedTheme, even
         onSuccess(data)
       } catch (err) {
         console.error('Processing error:', err)
-        setErrorMsg(err?.response?.data?.error || (lang === 'es' ? 'Algo salió mal. Intenta de nuevo.' : 'Something went wrong. Please try again.'))
+        const detail = err?.response?.data?.error || err?.message || 'Unknown error'
+        setErrorMsg(detail)
       }
     }
 
