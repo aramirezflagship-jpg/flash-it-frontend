@@ -1,46 +1,58 @@
-/**
- * Flash-It theme definitions.
- * Must stay in sync with backend config/themes.js
- */
 export const themes = [
   {
     id: 'elegant-wedding',
     nameEs: 'Boda Elegante',
     nameEn: 'Elegant Wedding',
     emoji: '💍',
-    prompt:
-      'Elegant wedding backdrop, soft ivory and gold tones, bokeh fairy lights, romantic rose petals, luxury ballroom atmosphere, cinematic lighting, ultra-realistic',
+    bannerEs: '¡Listos para la Luna de Miel! 🥂',
+    bannerEn: "We're Ready for the Honeymoon! 🥂",
   },
   {
     id: 'corporate-glow',
-    nameEs: 'Corporativo Glow',
+    nameEs: 'Brillo Corporativo',
     nameEn: 'Corporate Glow',
-    emoji: '🏢',
-    prompt:
-      'Modern corporate event backdrop, sleek glass and steel architecture, neon violet and white accent lighting, professional city skyline at night, premium business aesthetic',
+    emoji: '🏙️',
+    bannerEs: '¡Empleado del Mes! ⭐',
+    bannerEn: 'Employee of the Month! ⭐',
   },
   {
     id: 'xv-anos-royalty',
-    nameEs: 'XV Años Royalty',
+    nameEs: 'Realeza de XV Años',
     nameEn: 'XV Años Royalty',
     emoji: '👑',
-    prompt:
-      'Quinceañera XV años royal backdrop, pink and gold royal palace ballroom, crystal chandeliers, magenta and purple roses, tiara sparkles, fairy-tale princess atmosphere, vibrant',
+    bannerEs: '¡Felices 15 Años, Princesa! 👑',
+    bannerEn: 'Happy 15th Birthday, Princess! 👑',
   },
   {
     id: 'tropical-fiesta',
     nameEs: 'Fiesta Tropical',
     nameEn: 'Tropical Fiesta',
-    emoji: '🌴',
-    prompt:
-      'Vibrant tropical fiesta backdrop, lush palm trees, colorful papel picado flags, hibiscus flowers, warm sunset sky in orange and pink, festive Caribbean beach party atmosphere',
+    emoji: '🌺',
+    bannerEs: '¡Que Viva la Fiesta! 🌴',
+    bannerEn: 'Que Viva la Fiesta! 🌴',
   },
   {
     id: 'futuristic-neon',
     nameEs: 'Neón Futurista',
     nameEn: 'Futuristic Neon',
-    emoji: '🚀',
-    prompt:
-      'Cyberpunk futuristic neon backdrop, electric violet and magenta neon lights, holographic geometric shapes, dark dystopian cityscape, glowing grid lines, sci-fi aesthetic, ultra-vivid',
+    emoji: '🌆',
+    bannerEs: '¡Bienvenido al Futuro! ⚡',
+    bannerEn: 'Welcome to the Future! ⚡',
+  },
+  {
+    id: 'birthday-bash',
+    nameEs: 'Fiesta de Cumpleaños',
+    nameEn: 'Birthday Bash',
+    emoji: '🎂',
+    bannerEs: '¡Feliz Cumpleaños! 🎂',
+    bannerEn: 'Happy Birthday! 🎂',
+  },
+  {
+    id: 'holiday-magic',
+    nameEs: 'Magia Navideña',
+    nameEn: 'Holiday Magic',
+    emoji: '🎄',
+    bannerEs: '¡Feliz Navidad! 🎄',
+    bannerEn: 'Happy Holidays! 🎄',
   },
 ]

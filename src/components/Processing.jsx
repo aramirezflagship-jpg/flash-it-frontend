@@ -10,6 +10,7 @@ const getMessages = (lang) => [
 
 export default function Processing({ lang, t, capturedPhoto, selectedTheme, eventId, onSuccess, onError }) {
   const [msgIndex, setMsgIndex] = useState(0)
+  const [errorMsg, setErrorMsg] = useState(null)
   const hasCalled = useRef(false)
 
   // Cycle messages every 3 seconds
@@ -45,8 +46,7 @@ export default function Processing({ lang, t, capturedPhoto, selectedTheme, even
         onSuccess(data)
       } catch (err) {
         console.error('Processing error:', err)
-        // Wait at least 2s before returning to camera so user sees the screen
-        setTimeout(() => onError(), 2000)
+        setErrorMsg(err?.response?.data?.error || (lang === 'es' ? 'Algo salió mal. Intenta de nuevo.' : 'Something went wrong. Please try again.'))
       }
     }
 
@@ -54,6 +54,30 @@ export default function Processing({ lang, t, capturedPhoto, selectedTheme, even
   }, [capturedPhoto, selectedTheme, eventId, onSuccess, onError])
 
   const messages = getMessages(lang)
+
+  if (errorMsg) {
+    return (
+      <div className="relative w-full h-full min-h-screen flex flex-col items-center justify-center bg-[#0A0A0A] gap-8 px-8 text-center">
+        <span className="text-8xl">😬</span>
+        <p className="text-3xl font-bold text-white">{t('¡Ups! Algo salió mal', 'Oops! Something went wrong')}</p>
+        <p className="text-xl text-white/50">{errorMsg}</p>
+        <div className="flex gap-4 w-full max-w-md">
+          <button
+            onClick={() => { hasCalled.current = false; setErrorMsg(null); setMsgIndex(0) }}
+            className="flex-1 py-5 rounded-full text-xl font-bold text-white bg-gradient-to-r from-brand-violet to-brand-magenta active:scale-95 transition-all"
+          >
+            {t('Reintentar', 'Retry')}
+          </button>
+          <button
+            onClick={onError}
+            className="flex-1 py-5 rounded-full text-xl font-bold text-white bg-white/10 border border-white/20 active:scale-95 transition-all"
+          >
+            {t('Nueva foto', 'New photo')}
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="relative w-full h-full min-h-screen flex flex-col items-center justify-center bg-[#0A0A0A] overflow-hidden">

@@ -6,7 +6,7 @@ export default function Camera({ lang, t, onCapture, onBack }) {
   const streamRef = useRef(null)
   const [cameraReady, setCameraReady] = useState(false)
   const [cameraError, setCameraError] = useState(null)
-  const [countdown, setCountdown] = useState(null)   // null | 3 | 2 | 1
+  const [countdown, setCountdown] = useState(null)   // null | 10..1 | 0
   const [snapped, setSnapped] = useState(false)
   const [previewSrc, setPreviewSrc] = useState(null)
 
@@ -76,7 +76,7 @@ export default function Camera({ lang, t, onCapture, onBack }) {
 
   const startCountdown = () => {
     if (countdown !== null || snapped) return
-    setCountdown(3)
+    setCountdown(10)
   }
 
   useEffect(() => {
