@@ -8,16 +8,19 @@ export default function Delivery({ lang, t, result, eventId, onDelivered }) {
   const [error, setError] = useState(null)
   const [sentVia, setSentVia] = useState(null)
 
-  const qrUrl = result?.qrUrl || result?.photoUrl || 'https://flash-it.app'
+  const qrValue = result?.photoUrl || 'https://flash-it.app'
 
   const handleSend = async (method) => {
     if (!phone.trim() || sending) return
     setSending(true)
     setError(null)
+    // Ensure E.164 format — prepend +1 if no country code given
+    const rawPhone = phone.trim()
+    const formattedPhone = rawPhone.startsWith('+') ? rawPhone : `+1${rawPhone.replace(/\D/g, '')}`
     try {
       await deliverPhoto(eventId || 'demo', {
-        phone: phone.trim(),
-        method,
+        phone: formattedPhone,
+        channel: method,
         photoUrl: result?.photoUrl,
       })
       setSentVia(method)
@@ -52,7 +55,7 @@ export default function Delivery({ lang, t, result, eventId, onDelivered }) {
         <div className="flex flex-col items-center gap-3">
           <div className="p-4 bg-white rounded-2xl shadow-lg shadow-brand-violet/20">
             <QRCodeSVG
-              value={qrUrl}
+              value={qrValue}
               size={220}
               bgColor="#FFFFFF"
               fgColor="#0A0A0A"
