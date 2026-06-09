@@ -120,6 +120,11 @@ export async function deliverPhoto(eventId, payload) {
   return response.data
 }
 
+export async function captureContact(eventId, payload) {
+  const response = await api.post(`/api/events/${eventId}/contact`, payload)
+  return response.data
+}
+
 export { getQueueLength, getQueue }
 
 export default api
